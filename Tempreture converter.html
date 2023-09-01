@@ -1,0 +1,95 @@
+#HTML Code
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Temperature Converter</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Temperature Converter</h1>
+        <div class="input-container">
+            <input type="number" id="celsius" placeholder="Enter temperature in Celsius">
+            <button id="convert">Convert</button>
+        </div>
+        <div class="result">
+            <p><span id="resultText"></span><span id="result"></span></p>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
+
+#CSS code
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    text-align: center;
+}
+
+.container {
+    background-color: #ffffff;
+    margin: 20px auto;
+    padding: 20px;
+    max-width: 400px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+    color: #333;
+}
+
+.input-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+input {
+    width: 70%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.result {
+    margin-top: 20px;
+}
+
+p {
+    font-size: 18px;
+    color: #333;
+}
+
+#javascript code
+document.addEventListener("DOMContentLoaded", function () {
+    const celsiusInput = document.getElementById("celsius");
+    const convertButton = document.getElementById("convert");
+    const resultText = document.getElementById("resultText");
+    const result = document.getElementById("result");
+
+    convertButton.addEventListener("click", function () {
+        const celsiusValue = parseFloat(celsiusInput.value);
+        if (!isNaN(celsiusValue)) {
+            const fahrenheitValue = (celsiusValue * 9/5) + 32;
+            resultText.textContent = `${celsiusValue}°C is equal to `;
+            result.textContent = `${fahrenheitValue.toFixed(2)}°F`;
+        } else {
+            resultText.textContent = "Please enter a valid temperature.";
+            result.textContent = "";
+        }
+    });
+});
